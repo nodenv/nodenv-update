@@ -1,8 +1,31 @@
-This [rbenv](http://rbenv.org/) plugin adds the `rbenv update` command that updated rbenv and all installed plugins.
+# nodenv-update
+
+A [nodenv](https://github.com/OiNutter/nodenv) plugin that provides the
+`nodenv update` command to update nodenv as well as all installed nodenv plugins.
 
 ## Installation
 
-Simply clone the repository into the plugins directory:
+To install nodenv-update, clone this repository into your `~/.nodenv/plugins` directory
+(you'll need a recent version of nodenv that supports plugin bundles).
 
-    mkdir -p $RBENV_ROOT/plugins
-    git clone https://github.com/rkh/rbenv-update.git $RBENV_ROOT/plugins/rbenv-update
+    $ mkdir -p "$(nodenv root)"/plugins
+    $ git clone https://github.com/charlesbjohnson/nodenv-update.git "$(nodenv root)"/plugins/nodenv-update
+
+## Usage
+
+    nodenv update
+
+## Credits
+
+Copied from [rbenv-update](https://github.com/rkh/rbenv-update) and modified to work for node.
+Idea and style inspired by [nodenv](https://github.com/OiNutter/nodenv).
+
+### Version History
+
+**0.1.0** (August 20, 2014)
+
+* Initial public release. Copied from [rbenv-update](https://github.com/rkh/rbenv-update).
+
+## License
+
+© 2014 Charles B Johnson. Released under the MIT license. See `LICENSE.md` for details.
