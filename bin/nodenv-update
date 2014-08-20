@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 set -e
-[ -n "$RBENV_DEBUG" ] && set -x
+[ -n "$NODENV_DEBUG" ] && set -x
 
 indent_output() {
   while read data; do
@@ -12,7 +12,7 @@ is_git_repo() {
   $(git rev-parse --git-dir &>/dev/null)
 }
 
-rbenv_update() {
+nodenv_update() {
   echo -e "\033[1;32mupdating $1\033[0m"
   if is_git_repo; then
     git checkout master 2>&1 | indent_output
@@ -24,11 +24,11 @@ rbenv_update() {
   echo
 }
 
-cd ${RBENV_ROOT:-$(rbenv root)}
-rbenv_update rbenv
+cd $(nodenv root)
+nodenv_update nodenv
 
 for plugin in plugins/*; do
   pushd $plugin >/dev/null
-  rbenv_update `basename $plugin`
+  nodenv_update `basename $plugin`
   popd >/dev/null
 done

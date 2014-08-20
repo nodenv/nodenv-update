@@ -1,10 +1,10 @@
 #!/usr/bin/env bash
 set -e
-[ -n "$RBENV_DEBUG" ] && set -x
+[ -n "$NODENV_DEBUG" ] && set -x
 
-echo -n "$(which rbenv-update) && "
-echo -n 'echo -e "\033[1;32mreloading rbenv\033[0m" && '
-echo -n 'eval "$(rbenv init -)" && '
+echo -n "$(which nodenv-update) && "
+echo -n 'echo -e "\033[1;32mreloading nodenv\033[0m" && '
+echo -n 'eval "$(nodenv init -)" && '
 echo -n 'echo -e " \033[1;32m|\033[0m  done"'
 
 echo
