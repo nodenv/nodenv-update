@@ -9,7 +9,7 @@ indent_output() {
 }
 
 is_git_repo() {
-  [[ -d .git ]]
+  $(git rev-parse --git-dir &>/dev/null)
 }
 
 nodenv_update() {
