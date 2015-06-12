@@ -8,24 +8,24 @@ indent_output() {
   done
 }
 
-is_git_repo() {
-  $(git rev-parse --git-dir &>/dev/null)
+is_nodenv_git_repo() {
+  $(git remote -v | grep -E 'nodenv|node-build' &>/dev/null)
 }
 
 nodenv_update() {
   echo -e "\033[1;32mupdating $1\033[0m"
-  if is_git_repo; then
-    git checkout master 2>&1 | indent_output
-    git pull origin master 2>&1 | indent_output
+  if is_nodenv_git_repo; then
+    git pull --no-rebase --ff 2>&1 | indent_output
   else
-    echo -e "Not a git repo; skipping..." | indent_output
+    echo -e "Not a nodenv git repo; skipping..." | indent_output
   fi
   echo
 }
 
-cd "${NODENV_ROOT:-$(nodenv root)}"
+cd "$(dirname $(which nodenv))"
 nodenv_update nodenv
 
+cd "${NODENV_ROOT:-$(nodenv root)}"
 for plugin in plugins/*; do
   pushd $plugin >/dev/null
   nodenv_update `basename $plugin`
