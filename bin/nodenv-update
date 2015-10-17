@@ -1,23 +1,47 @@
 #!/usr/bin/env bash
+# Usage: nodenv update [--noop]
+# Summary: Updates to latest version of nodenv and plugins from git.
 set -e
 [ -n "$NODENV_DEBUG" ] && set -x
 
+noop=""
+while [ $# -gt 0 ]; do
+  case "$1" in
+  --noop ) noop=true ;;
+  esac
+  shift 1
+done
+
+git() {
+  local cmd="command"
+  [[ -n "$noop" && "$1" = "pull" ]] && cmd="echo"
+  $cmd git "$@"
+}
+
+if [ -t 1 ]; then
+  color="\e[1;32m"
+  reset="\e[0m"
+else
+  color=""
+  reset=""
+fi
+
 indent_output() {
   while read data; do
-    echo -e " \033[1;32m|\033[0m  $data"
+    printf " ${color}|${reset}  %s\n" "$data"
   done
 }
 
 is_nodenv_git_repo() {
-  $(git remote -v | grep -E 'nodenv|node-build' &>/dev/null)
+  git remote -v 2>/dev/null | grep -q 'nodenv\|node-build'
 }
 
 nodenv_update() {
-  echo -e "\033[1;32mupdating $1\033[0m"
+  printf "${color}updating %s${reset}\n" "$1"
   if is_nodenv_git_repo; then
     git pull --no-rebase --ff 2>&1 | indent_output
   else
-    echo -e "Not a nodenv git repo; skipping..." | indent_output
+    echo "Not an nodenv git repo; skipping..." | indent_output
   fi
   echo
 }
@@ -25,9 +49,10 @@ nodenv_update() {
 cd "$(dirname $(which nodenv))"
 nodenv_update nodenv
 
-cd "${NODENV_ROOT:-$(nodenv root)}"
-for plugin in plugins/*; do
+shopt -s nullglob
+for plugin in "$NODENV_ROOT"/plugins/*; do
   pushd $plugin >/dev/null
   nodenv_update `basename $plugin`
   popd >/dev/null
 done
+shopt -u nullglob
