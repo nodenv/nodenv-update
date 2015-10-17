@@ -2,7 +2,35 @@
 set -e
 [ -n "$NODENV_DEBUG" ] && set -x
 
-echo "$(which nodenv-update)"
-echo 'echo -e "\033[1;32mreloading nodenv\033[0m"'
-eval "$(nodenv init -)"
-echo 'echo -e " \033[1;32m|\033[0m  done"'
+shell="$(basename "${NODENV_SHELL:-$SHELL}")"
+
+case "$shell" in
+fish )
+  cat <<EOF
+command nodenv update $@
+if command test -t 1
+  printf "\\e[1;32mreloading nodenv\\e[0m\\n"
+  . (nodenv init -|psub)
+  printf " \\033[1;32m|\\033[0m  done\\n"
+else
+  printf "reloading nodenv\\n"
+  . (nodenv init -|psub)
+  printf " |  done\\n"
+end
+EOF
+  ;;
+* )
+  cat <<EOF
+command nodenv update $@;
+if [ -t 1 ]; then
+  printf "\\e[1;32mreloading nodenv\\e[0m\\n";
+  eval "\$(nodenv init -)";
+  printf " \\033[1;32m|\\033[0m  done\\n";
+else
+  printf "reloading nodenv\\n";
+  eval "\$(nodenv init -)";
+  printf " |  done\\n";
+fi
+EOF
+  ;;
+esac
