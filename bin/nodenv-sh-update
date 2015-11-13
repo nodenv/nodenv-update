@@ -4,33 +4,33 @@ set -e
 
 shell="$(basename "${NODENV_SHELL:-$SHELL}")"
 
+# Parse command line flags
+if echo "$@" | egrep -q '(-n\|--noop)'; then noop=true; fi
+if echo "$@" | egrep -q '(-q\|--quiet\|--silent)'; then quiet=true; fi
+
+colorize() {
+  if [ "$shell" = fish ]; then echo "  if isatty stdout; set_color --bold; end"
+  else echo "  if [ -t 1 ]; then printf \"\\e[1;32m\"; fi;"; fi
+
+  echo "  printf \"$1\";"
+
+  if [ "$shell" = fish ]; then echo "  set_color normal"
+  else echo "  if [ -t 1 ]; then printf \"\\e[0m\"; fi;"; fi
+
+  echo "  printf \"$2\";"
+}
+
 case "$shell" in
-fish )
-  cat <<EOF
-command nodenv update $@
-if command test -t 1
-  printf "\\e[1;32mreloading nodenv\\e[0m\\n"
-  . (nodenv init -|psub)
-  printf " \\033[1;32m|\\033[0m  done\\n"
-else
-  printf "reloading nodenv\\n"
-  . (nodenv init -|psub)
-  printf " |  done\\n"
-end
-EOF
-  ;;
-* )
-  cat <<EOF
-command nodenv update $@;
-if [ -t 1 ]; then
-  printf "\\e[1;32mreloading nodenv\\e[0m\\n";
-  eval "\$(nodenv init -)";
-  printf " \\033[1;32m|\\033[0m  done\\n";
-else
-  printf "reloading nodenv\\n";
-  eval "\$(nodenv init -)";
-  printf " |  done\\n";
-fi
-EOF
-  ;;
+  fish )
+    echo "if command nodenv update $@"
+      if [ -z "$quiet" ]; then colorize "Reloading nodenv\n"; fi
+      if [ -z "$noop" ];  then echo "  source (nodenv init -|psub)"; fi
+      if [ -z "$quiet" ]; then colorize " | " "done\n"; fi
+    echo "end" ;;
+  * )
+    echo "if command nodenv update $@; then"
+      if [ -z "$quiet" ]; then colorize "Reloading nodenv\n"; fi
+      if [ -z "$noop" ];  then echo "  eval \"\$(nodenv init -)\";"; fi
+      if [ -z "$quiet" ]; then colorize " | " "done\n"; fi
+    echo "fi;" ;;
 esac
