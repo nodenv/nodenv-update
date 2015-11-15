@@ -23,7 +23,7 @@ while [ $# -gt 0 ]; do
     nodenv-help --usage update
     exit ;;
   * )
-    printf "Unrecognized option: $1\n\n" >&2
+    printf "Unrecognized option: %s\n\n" "$1" >&2
     nodenv-help --usage update
     exit 1 ;;
   esac
