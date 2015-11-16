@@ -1,6 +1,6 @@
 # nodenv-update
 
-A [nodenv](https://github.com/OiNutter/nodenv) plugin that provides the
+A [nodenv][] plugin that provides the
 `nodenv update` command to update nodenv as well as all installed nodenv plugins.
 
 ## Installation
@@ -18,6 +18,7 @@ To install nodenv-update, clone this repository into your `~/.nodenv/plugins` di
 ## Credits
 
 Copied from [rbenv-update][] and modified to work for node.
-Idea and style inspired by [nodenv](https://github.com/OiNutter/nodenv).
+Idea and style inspired by [nodenv][].
 
-[rbenv-update]:https://github.com/rkh/rbenv-update
+[rbenv-update]: https://github.com/rkh/rbenv-update
+[nodenv]: https://github.com/OiNutter/nodenv
