@@ -35,6 +35,3 @@ Idea and style inspired by [nodenv](https://github.com/OiNutter/nodenv).
 * Initial public release. Copied from [rbenv-update][].
 
 [rbenv-update]:https://github.com/rkh/rbenv-update
-## License
-
-© 2014 Charles B Johnson. Released under the MIT license. See `LICENSE.md` for details.
