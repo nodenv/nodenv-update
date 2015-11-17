@@ -10,15 +10,9 @@ for arg; do
   -n | --noop ) noop=true ;;
   -v | --verbose ) verbose=true ;;
   -q | --quiet | --silent ) quiet=true ;;
-  --complete )
-    echo "command nodenv update --complete"
-    exit ;;
-  --help )
-    echo "command nodenv help update"
-    exit ;;
   * )
-    echo "command nodenv help --usage update >&2"
-    exit 1 ;;
+    echo "command nodenv update $@"
+    exit ;;
   esac
 done
 
