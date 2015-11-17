@@ -5,8 +5,22 @@ set -e
 shell="$(basename "${NODENV_SHELL:-$SHELL}")"
 
 # Parse command line flags
-if echo "$@" | egrep -q '(-n\|--noop)'; then noop=true; fi
-if echo "$@" | egrep -q '(-q\|--quiet\|--silent)'; then quiet=true; fi
+for arg; do
+  case "$arg" in
+  -n | --noop ) noop=true ;;
+  -v | --verbose ) verbose=true ;;
+  -q | --quiet | --silent ) quiet=true ;;
+  --complete )
+    echo "command nodenv update --complete"
+    exit ;;
+  --help )
+    echo "command nodenv help update"
+    exit ;;
+  * )
+    echo "command nodenv help --usage update >&2"
+    exit 1 ;;
+  esac
+done
 
 colorize() {
   if [ "$shell" = fish ]; then echo "  if isatty stdout; set_color --bold; end"
