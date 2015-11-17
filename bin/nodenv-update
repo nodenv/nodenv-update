@@ -9,8 +9,8 @@ set -e
 noop=""
 verbose=""
 quiet=""
-while [ $# -gt 0 ]; do
-  case "$1" in
+for arg; do
+  case "$arg" in
   -n | --noop ) noop=true ;;
   -v | --verbose ) verbose=true ;;
   -q | --quiet | --silent ) quiet=true ;;
@@ -20,14 +20,12 @@ while [ $# -gt 0 ]; do
     echo --verbose
     exit ;;
   --help )
-    nodenv-help --usage update
-    exit ;;
+    exec nodenv-help update
+    ;;
   * )
-    printf "Unrecognized option: %s\n\n" "$1" >&2
-    nodenv-help --usage update
+    nodenv-help --usage update >&2
     exit 1 ;;
   esac
-  shift 1
 done
 
 # Set colored output for TTY
