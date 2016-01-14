@@ -19,9 +19,6 @@ for arg; do
     echo --quiet
     echo --verbose
     exit ;;
-  --help )
-    exec nodenv-help update
-    ;;
   * )
     nodenv-help --usage update >&2
     exit 1 ;;
