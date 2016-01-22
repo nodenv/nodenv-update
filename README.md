@@ -5,7 +5,7 @@ A [nodenv][] plugin that provides the
 
 ## Installation
 
-To install nodenv-update, clone this repository into your `~/.nodenv/plugins` directory
+To install nodenv-update, clone this repository into your `$(nodenv root)/plugins` directory
 (you'll need a recent version of nodenv that supports plugin bundles).
 
     $ mkdir -p "$(nodenv root)"/plugins
