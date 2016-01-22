@@ -21,4 +21,4 @@ Copied from [rbenv-update][] and modified to work for node.
 Idea and style inspired by [nodenv][].
 
 [rbenv-update]: https://github.com/rkh/rbenv-update
-[nodenv]: https://github.com/OiNutter/nodenv
+[nodenv]: https://github.com/nodenv/nodenv
