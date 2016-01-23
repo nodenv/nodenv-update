@@ -9,7 +9,7 @@ To install nodenv-update, clone this repository into your `$(nodenv root)/plugin
 (you'll need a recent version of nodenv that supports plugin bundles).
 
     $ mkdir -p "$(nodenv root)"/plugins
-    $ git clone https://github.com/charlesbjohnson/nodenv-update.git "$(nodenv root)"/plugins/nodenv-update
+    $ git clone https://github.com/nodenv/nodenv-update.git "$(nodenv root)"/plugins/nodenv-update
 
 ## Usage
 
