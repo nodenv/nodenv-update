@@ -1,0 +1,36 @@
+{
+  "name": "nodenv-update",
+  "version": "0.2.0",
+  "private": true,
+  "description": "nodenv plugin for updating nodenv and all nodenv plugins",
+  "homepage": "https://github.com/nodenv/nodenv-update#readme",
+  "author": "Konstantin Haase <github@rkh.im> (http://rkh.im)",
+  "contibutors": [
+    "Charlie Johnson <mail@cbjohnson.info> (https://cbjohnson.info)",
+    "Jason Karns <jason@karns.name> (http://jason.karns.name)"
+  ],
+  "directories": {
+    "bin": "bin"
+  },
+  "scripts": {
+    "publish:brew": "brew-publish $npm_package_name v$npm_package_version",
+    "postversion": "git push origin master v$npm_package_version && npm run publish:brew"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/nodenv/nodenv-update.git"
+  },
+  "bugs": {
+    "url": "https://github.com/nodenv/nodenv-update/issues"
+  },
+  "devDependencies": {
+    "brew-publish": "git+https://github.com/jasonkarns/brew-publish.git#nodenv-tap"
+  },
+  "keywords": [
+    "nodenv",
+    "plugin",
+    "update",
+    "git"
+  ],
+  "license": "MIT"
+}
