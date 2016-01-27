@@ -17,8 +17,9 @@ To install nodenv-update, clone this repository into your `$(nodenv root)/plugin
 
 ## Credits
 
-Copied from [rbenv-update][] and modified to work for node.
-Idea and style inspired by [nodenv][].
+Forked from [Konstantin Haase](https://github.com/rkh)'s
+[rbenv-update][] by 
+[Charlie Johnson](https://github.com/charlesbjohnson) and modified for [nodenv][].
 
 [rbenv-update]: https://github.com/rkh/rbenv-update
 [nodenv]: https://github.com/nodenv/nodenv
