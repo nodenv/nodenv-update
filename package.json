@@ -21,10 +21,10 @@
     "bin": "bin"
   },
   "scripts": {
-    "publish:brew": "brew-publish $npm_package_name v$npm_package_version -r -t nodenv/homebrew-nodenv",
+    "publish:brew": "brew-publish $npm_package_name v$npm_package_version",
     "postversion": "git push origin master v$npm_package_version && npm run publish:brew"
   },
   "devDependencies": {
-    "brew-publish": "git+https://github.com/jasonkarns/brew-publish.git#v1.1.0"
+    "brew-publish": "^2.0.0"
   }
 }
