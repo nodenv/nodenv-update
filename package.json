@@ -21,6 +21,8 @@
     "bin": "bin"
   },
   "scripts": {
+    "posttest": "npm run lint",
+    "lint": "git ls-files bin | xargs shellcheck",
     "publish:brew": "brew-publish $npm_package_name v$npm_package_version",
     "postversion": "git push --follow-tags && npm run publish:brew"
   },
