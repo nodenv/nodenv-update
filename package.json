@@ -23,8 +23,10 @@
     "start": "bin/nodenv-update",
     "posttest": "npm run lint",
     "lint": "git ls-files bin **/*.*sh | xargs shellcheck",
-    "publish:brew": "brew-publish $npm_package_name v$npm_package_version",
-    "postversion": "git push --follow-tags && npm run publish:brew"
+    "postversion": "npm publish",
+    "prepublishOnly": "npm run publish:github && npm run publish:brew",
+    "publish:brew": "brew-publish",
+    "publish:github": "git push --follow-tags"
   },
   "devDependencies": {
     "brew-publish": "^2.0.0"
