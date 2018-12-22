@@ -4,10 +4,10 @@
   "description": "nodenv plugin for updating nodenv and all nodenv plugins",
   "homepage": "https://github.com/nodenv/nodenv-update#readme",
   "license": "MIT",
-  "author": "Konstantin Haase <github@rkh.im> (http://rkh.im)",
   "contibutors": [
     "Charlie Johnson <mail@cbjohnson.info> (https://cbjohnson.info)",
-    "Jason Karns <jason@karns.name> (http://jason.karns.name)"
+    "Jason Karns <jason@karns.name> (http://jason.karns.name)",
+    "Konstantin Haase <github@rkh.im> (http://rkh.im)"
   ],
   "repository": {
     "type": "git",
