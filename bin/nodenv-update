@@ -82,6 +82,7 @@ if [ -n "$noop" ] && [ -n "$quiet" ]; then
   print_colored "Both --noop and --quiet given; ignoring --quiet" >&2
 fi
 
+# shellcheck disable=SC2230
 cd "$(dirname "$(which nodenv)")"
 nodenv_update nodenv
 

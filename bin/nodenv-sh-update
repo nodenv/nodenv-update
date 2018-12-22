@@ -8,10 +8,10 @@ shell="$(basename "${NODENV_SHELL:-$SHELL}")"
 for arg; do
   case "$arg" in
   -n | --noop ) noop=true ;;
-  -v | --verbose ) verbose=true ;;
+  # -v | --verbose ) verbose=true ;;
   -q | --quiet | --silent ) quiet=true ;;
   * )
-    echo "command nodenv update $@"
+    echo "command nodenv update $*"
     exit ;;
   esac
 done
@@ -30,13 +30,13 @@ colorize() {
 
 case "$shell" in
   fish )
-    echo "if command nodenv update $@"
+    echo "if command nodenv update $*"
       if [ -z "$quiet" ]; then colorize "Reloading nodenv\n"; fi
       if [ -z "$noop" ];  then echo "  source (nodenv init -|psub)"; fi
       if [ -z "$quiet" ]; then colorize " | " "done\n"; fi
     echo "end" ;;
   * )
-    echo "if command nodenv update $@; then"
+    echo "if command nodenv update $*; then"
       if [ -z "$quiet" ]; then colorize "Reloading nodenv\n"; fi
       if [ -z "$noop" ];  then echo "  eval \"\$(nodenv init -)\";"; fi
       if [ -z "$quiet" ]; then colorize " | " "done\n"; fi
