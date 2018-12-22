@@ -1,7 +1,6 @@
 {
-  "name": "nodenv-update",
+  "name": "@nodenv/nodenv-update",
   "version": "0.2.0",
-  "private": true,
   "description": "nodenv plugin for updating nodenv and all nodenv plugins",
   "homepage": "https://github.com/nodenv/nodenv-update#readme",
   "license": "MIT",
