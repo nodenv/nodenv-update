@@ -29,6 +29,6 @@
     "publish:github": "git push --follow-tags"
   },
   "devDependencies": {
-    "brew-publish": "^2.0.0"
+    "brew-publish": "^2.3.1"
   }
 }
