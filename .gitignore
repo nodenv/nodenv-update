@@ -1,2 +1,4 @@
 /node_modules
 /nodenv-nodenv-update-*.tgz
+/package-lock.json
+/yarn.lock
