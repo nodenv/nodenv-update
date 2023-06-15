@@ -8,8 +8,8 @@ A [nodenv][] plugin that provides the
 To install nodenv-update, clone this repository into your `$(nodenv root)/plugins` directory
 (you'll need a recent version of nodenv that supports plugin bundles).
 
-    $ mkdir -p "$(nodenv root)"/plugins
-    $ git clone https://github.com/nodenv/nodenv-update.git "$(nodenv root)"/plugins/nodenv-update
+    mkdir -p "$(nodenv root)"/plugins
+    git clone https://github.com/nodenv/nodenv-update.git "$(nodenv root)"/plugins/nodenv-update
 
 ## Usage
 
