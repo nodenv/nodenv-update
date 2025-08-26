@@ -27,12 +27,6 @@
     "test": "bats ${CI:+--tap} test",
     "posttest": "npm run lint",
     "lint": "git ls-files bin etc script */*.*sh | xargs shellcheck",
-    "postversion": "npm publish",
-    "prepublishOnly": "npm run publish:github && npm run publish:brew",
-    "publish:brew": "brew-publish",
-    "publish:github": "git push --follow-tags"
-  },
-  "devDependencies": {
-    "brew-publish": "^2.3.1"
+    "postversion": "git push --follow-tags"
   }
 }
