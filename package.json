@@ -4,34 +4,29 @@
   "description": "nodenv plugin for updating nodenv and all nodenv plugins",
   "homepage": "https://github.com/nodenv/nodenv-update#readme",
   "license": "MIT",
-  "contibutors": [
+  "contributors": [
     "Charlie Johnson <mail@cbjohnson.info> (https://cbjohnson.info)",
-    "Jason Karns <jason@karns.name> (http://jason.karns.name)",
+    "Jason Karns <jason.karns@gmail.com> (http://jasonkarns.com)",
     "Konstantin Haase <github@rkh.im> (http://rkh.im)"
   ],
   "repository": {
     "type": "git",
-    "url": "https://github.com/nodenv/nodenv-update.git"
+    "url": "git+https://github.com/nodenv/nodenv-update.git"
   },
   "bugs": {
     "url": "https://github.com/nodenv/nodenv-update/issues"
   },
-  "files": [
-    "bin"
-  ],
   "directories": {
     "bin": "bin"
   },
+  "files": [
+    "bin"
+  ],
   "scripts": {
     "start": "bin/nodenv-update",
+    "test": "bats ${CI:+--tap} test",
     "posttest": "npm run lint",
-    "lint": "git ls-files bin **/*.*sh | xargs shellcheck",
-    "postversion": "npm publish",
-    "prepublishOnly": "npm run publish:github && npm run publish:brew",
-    "publish:brew": "brew-publish",
-    "publish:github": "git push --follow-tags"
-  },
-  "devDependencies": {
-    "brew-publish": "^2.3.1"
+    "lint": "git ls-files bin etc script */*.*sh | xargs shellcheck",
+    "postversion": "git push --follow-tags"
   }
 }
