@@ -1,6 +1,6 @@
 # nodenv-update
 
-[nodenv][] plugin to update nodenv and installed plugins
+A [nodenv][] plugin to update nodenv and installed plugins.
 
 [![Tests](https://img.shields.io/github/actions/workflow/status/nodenv/nodenv-update/test.yml?label=tests&logo=github)](https://github.com/nodenv/nodenv-update/actions/workflows/test.yml)
 [![Latest GitHub Release](https://img.shields.io/github/v/release/nodenv/nodenv-update?label=github&logo=github&sort=semver)](https://github.com/nodenv/nodenv-update/releases/latest)
